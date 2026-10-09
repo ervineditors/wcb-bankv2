@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Central Bank (WCB)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold tracking-wider text-cyan-400">WORLD CENTRAL BANK</h1>
+    <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800 px-3 py-1 rounded-full font-mono">SYSTEM ACTIVE</span>
+  </nav>
+
+  <!-- Container Utama -->
+  <main class="max-w-7xl mx-auto p-6 space-y-6">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Form Input / Registrasi -->
+      <section class="bg-slate-800/80 border border-slate-700 p-5 rounded-xl">
+        <h2 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
+          <span>📝</span> Registrasi & Update Kurs
+        </h2>
+        <form id="wcbForm" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Nama Negara</label>
+            <input type="text" id="countryName" required placeholder="Contoh: Euphonia" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Kurs EUPH</label>
+              <input type="number" step="any" id="euphRate" required placeholder="1.00" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Mata Uang Lokal</label>
+              <input type="text" id="localCurrency" required placeholder="EUPH / USD" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Stok Gudang / Logistik (Unit)</label>
+            <input type="number" id="warehouseSupply" required placeholder="1000" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+          </div>
+          <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-medium py-2 rounded-lg transition-colors text-sm">
+            Simpan Data Negara
+          </button>
+        </form>
+      </section>
+
+      <!-- Dashboard Real-time -->
+      <section class="lg:col-span-2 bg-slate-800/80 border border-slate-700 p-5 rounded-xl flex flex-col">
+        <h2 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
+          <span>📊</span> Dashboard Monitoring Real-time
+        </h2>
+        <div class="overflow-x-auto flex-1">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-900/60 text-slate-400 uppercase text-[11px] tracking-wider border-b border-slate-700">
+              <tr>
+                <th class="py-3 px-3">Negara</th>
+                <th class="py-3 px-3">Kurs EUPH</th>
+                <th class="py-3 px-3">Mata Uang</th>
+                <th class="py-3 px-3">Gudang</th>
+                <th class="py-3 px-3">Status</th>
+                <th class="py-3 px-3 text-right">Aksi Admin</th>
+              </tr>
+            </thead>
+            <tbody id="countryTableBody" class="divide-y divide-slate-700/50">
+              <!-- Data Firebase masuk di sini -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Firebase SDK v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
